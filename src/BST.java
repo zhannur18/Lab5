@@ -76,5 +76,11 @@ public class BST <K extends Comparable<K>, V>{
 
         return node;
     }
+    // Method to find the minimum node in a subtree
+    private Node findMin(Node node) {
+        if (node.left == null)
+            return node;
+        return findMin(node.left);
+    }
 
 }
