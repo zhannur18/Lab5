@@ -15,7 +15,6 @@ public class BST <K extends Comparable<K>, V>{
     // Recursive helper method to insert a key-value pair
     private Node put(Node node, K key, V val) {
         if (node == null) {
-            size++;
             return new Node(key, val);
         }
 
@@ -28,6 +27,11 @@ public class BST <K extends Comparable<K>, V>{
             node.val = val; // Update the value if key already exists
 
         return node;
+    }
+    // Method to retrieve the value associated with a given key
+    public V get(K key) {
+        Node node = get(root, key);
+        return node == null ? null : node.val;
     }
 
 }
