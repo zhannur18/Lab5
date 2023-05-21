@@ -46,5 +46,9 @@ public class BST <K extends Comparable<K>, V>{
         else
             return node;
     }
+    // Method to delete a key-value pair from the BST
+    public void delete(K key) {
+        root = delete(root, key);
+    }
 
 }
