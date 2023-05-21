@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 public class BST <K extends Comparable<K>, V>{
     private Node root;
     private class Node {
@@ -88,6 +90,12 @@ public class BST <K extends Comparable<K>, V>{
             return node.right;
         node.left = deleteMin(node.left);
         return node;
+    }
+    // Method to create an iterable of nodes in the BST using in-order traversal
+    public Iterable<Node> iterator() {
+        List<Node> nodes = new ArrayList<>();
+        inOrderTraversal(root, nodes);
+        return nodes;
     }
 
 }
