@@ -65,7 +65,13 @@ public class BST <K extends Comparable<K>, V>{
                 return node.right; // Replace the node with its right child if left child is null
             else if (node.right == null)
                 return node.left; // Replace the node with its left child if right child is null
-
+            else {
+                // Replace the node with the minimum node from the right subtree
+                Node minNode = findMin(node.right);
+                node.key = minNode.key;
+                node.val = minNode.val;
+                node.right = deleteMin(node.right); // Delete the minimum node from the right subtree
+            }
         }
 
         return node;
