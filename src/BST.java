@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-public class BST <K extends Comparable<K>, V>{
+public class BST <K extends Comparable<K>, V>implements Iterable<BST<K, V>.Node> {
     private Node root;
     private int size;
 
-    private class Node {
+    public class Node {
         private K key;
         private V val;
         private Node left, right;
@@ -34,8 +35,8 @@ public class BST <K extends Comparable<K>, V>{
         return node;
     }
     // Method to retrieve the value associated with a given key
-    public V get(K key) {
-        Node node = get(root, key);
+    public V get(BST<Integer, String>.Node key) {
+        Node node = get(root, (K) key);
         return node == null ? null : node.val;
     }
     // Recursive helper method to retrieve a node with a given key
@@ -96,10 +97,10 @@ public class BST <K extends Comparable<K>, V>{
         return node;
     }
     // Method to create an iterable of nodes in the BST using in-order traversal
-    public Iterable<Node> iterator() {
-        List<Node> nodes = new ArrayList<>();
-        inOrderTraversal(root, nodes);
-        return nodes;
+    public Iterator<Node> iterator() {
+        List<Node> keys = new ArrayList<>();
+        inOrderTraversal(root, keys);
+        return keys.iterator();
     }
     // Recursive helper method to perform in-order traversal of the BST
     private void inOrderTraversal(Node node, List<Node> nodes) {
