@@ -33,5 +33,18 @@ public class BST <K extends Comparable<K>, V>{
         Node node = get(root, key);
         return node == null ? null : node.val;
     }
+    // Recursive helper method to retrieve a node with a given key
+    private Node get(Node node, K key) {
+        if (node == null)
+            return null;
+
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0)
+            return get(node.left, key); // Traverse to the left subtree if key is less
+        else if (cmp > 0)
+            return get(node.right, key); // Traverse to the right subtree if key is greater
+        else
+            return node;
+    }
 
 }
