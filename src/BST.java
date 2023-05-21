@@ -97,5 +97,13 @@ public class BST <K extends Comparable<K>, V>{
         inOrderTraversal(root, nodes);
         return nodes;
     }
+    // Recursive helper method to perform in-order traversal of the BST
+    private void inOrderTraversal(Node node, List<Node> nodes) {
+        if (node != null) {
+            inOrderTraversal(node.left, nodes); // Traverse the left subtree
+            nodes.add(node); // Add the current node to the list
+            inOrderTraversal(node.right, nodes); // Traverse the right subtree
+        }
+    }
 
 }
