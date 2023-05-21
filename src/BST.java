@@ -50,5 +50,25 @@ public class BST <K extends Comparable<K>, V>{
     public void delete(K key) {
         root = delete(root, key);
     }
+    // Recursive helper method to delete a node with a given key
+    private Node delete(Node node, K key) {
+        if (node == null)
+            return null;
+
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0)
+            node.left = delete(node.left, key); // Traverse to the left subtree if key is less
+        else if (cmp > 0)
+            node.right = delete(node.right, key); // Traverse to the right subtree if key is greater
+        else {
+            if (node.left == null)
+                return node.right; // Replace the node with its right child if left child is null
+            else if (node.right == null)
+                return node.left; // Replace the node with its left child if right child is null
+
+        }
+
+        return node;
+    }
 
 }
