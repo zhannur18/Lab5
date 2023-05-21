@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 public class BST <K extends Comparable<K>, V>{
     private Node root;
+    private int size;
+
     private class Node {
         private K key;
         private V val;
@@ -17,6 +19,7 @@ public class BST <K extends Comparable<K>, V>{
     // Recursive helper method to insert a key-value pair
     private Node put(Node node, K key, V val) {
         if (node == null) {
+            size++;
             return new Node(key, val);
         }
 
@@ -51,6 +54,7 @@ public class BST <K extends Comparable<K>, V>{
     // Method to delete a key-value pair from the BST
     public void delete(K key) {
         root = delete(root, key);
+        size--;
     }
     // Recursive helper method to delete a node with a given key
     private Node delete(Node node, K key) {
@@ -105,5 +109,8 @@ public class BST <K extends Comparable<K>, V>{
             inOrderTraversal(node.right, nodes); // Traverse the right subtree
         }
     }
-
+    // Method to get the size of the BST
+    public int size() {
+        return size;
+    }
 }
