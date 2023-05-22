@@ -10,6 +10,17 @@ public class Main {
             System.out.println("key is " + key + " and value is " + value);
         }
 
-    }
+        BST<Integer, String> bst = new BST<>();
+        bst.put(5, "Five");
+        bst.put(3, "Three");
+        bst.put(7, "Seven");
+        bst.put(2, "Two");
+        bst.put(4, "Four");
+        bst.put(6, "Six");
+        bst.put(8, "Eight");
 
-}
+        int treeSize = bst.levelTree();
+        System.out.println("Size of the tree: " + treeSize);
+
+
+    }}

@@ -4,6 +4,7 @@ import java.util.List;
 public class BST <K extends Comparable<K>, V>implements Iterable<BST<K, V>.Node> {
     private Node root;
     private int size;
+    private boolean node;
 
     public class Node {
         private K key;
@@ -110,8 +111,24 @@ public class BST <K extends Comparable<K>, V>implements Iterable<BST<K, V>.Node>
             inOrderTraversal(node.right, nodes); // Traverse the right subtree
         }
     }
-    // Method to get the size of the BST
     public int size() {
         return size;
     }
-}
+    public int levelTree(){
+        return levelTree(root, 0);
+        public int levelTree(Node node, int size) {
+            if (node != null) {
+                size = size + 1;
+
+                int size1 = levelTree(node.right, size);
+                int size2 = levelTree(node.left, size);
+
+                size = Math.max(size, Math.max(size1, size2));
+            }
+            return size;
+        }
+
+        public int levelTree() {
+            return levelTree(root, 0);
+        }
+    }}
